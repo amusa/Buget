@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditBudgetItemTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditBudgetItemLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{budgetItemController.selected.id}" title="#{bundle.EditBudgetItemTitle_id}" required="true" requiredMessage="#{bundle.EditBudgetItemRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditBudgetItemLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{budgetItemController.selected.description}" title="#{bundle.EditBudgetItemTitle_description}" required="true" requiredMessage="#{bundle.EditBudgetItemRequiredMessage_description}"/>
+                    <h:outputLabel value="#{bundle.EditBudgetItemLabel_budgetClassId}" for="budgetClassId" />
+                    <h:selectOneMenu id="budgetClassId" value="#{budgetItemController.selected.budgetClassId}" title="#{bundle.EditBudgetItemTitle_budgetClassId}" required="true" requiredMessage="#{bundle.EditBudgetItemRequiredMessage_budgetClassId}">
+                        <f:selectItems value="#{budgetClassController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{budgetItemController.update}" value="#{bundle.EditBudgetItemSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditBudgetItemViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{budgetItemController.prepareList}" value="#{bundle.EditBudgetItemShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditBudgetItemIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

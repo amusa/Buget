@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEmployeeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEmployeeLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{employeeController.selected.id}" title="#{bundle.EditEmployeeTitle_id}" required="true" requiredMessage="#{bundle.EditEmployeeRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditEmployeeLabel_firstName}" for="firstName" />
+                    <h:inputText id="firstName" value="#{employeeController.selected.firstName}" title="#{bundle.EditEmployeeTitle_firstName}" required="true" requiredMessage="#{bundle.EditEmployeeRequiredMessage_firstName}"/>
+                    <h:outputLabel value="#{bundle.EditEmployeeLabel_lastName}" for="lastName" />
+                    <h:inputText id="lastName" value="#{employeeController.selected.lastName}" title="#{bundle.EditEmployeeTitle_lastName}" required="true" requiredMessage="#{bundle.EditEmployeeRequiredMessage_lastName}"/>
+                    <h:outputLabel value="#{bundle.EditEmployeeLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{employeeController.selected.email}" title="#{bundle.EditEmployeeTitle_email}" />
+                    <h:outputLabel value="#{bundle.EditEmployeeLabel_phone}" for="phone" />
+                    <h:inputText id="phone" value="#{employeeController.selected.phone}" title="#{bundle.EditEmployeeTitle_phone}" />
+                    <h:outputLabel value="#{bundle.EditEmployeeLabel_password}" for="password" />
+                    <h:inputText id="password" value="#{employeeController.selected.password}" title="#{bundle.EditEmployeeTitle_password}" />
+                </h:panelGrid>
+                <h:commandLink action="#{employeeController.update}" value="#{bundle.EditEmployeeSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditEmployeeViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{employeeController.prepareList}" value="#{bundle.EditEmployeeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditEmployeeIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

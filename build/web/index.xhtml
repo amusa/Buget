@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+<h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+      Hello from Facelets
+      <f:view>
+          <h:form>
+              <h1><h:outputText value="List"/></h1>
+              <h:dataTable value="#{employeeManager.employees}" var="item">
+                  <h:column>
+                      <f:facet name="header">
+                          <h:outputText value="Id"/>
+                      </f:facet>
+                      <h:outputText value="#{item.id}"/>
+                  </h:column>
+                  <h:column>
+                      <f:facet name="header">
+                          <h:outputText value="FirstName"/>
+                      </f:facet>
+                      <h:outputText value="#{item.firstName}"/>
+                  </h:column>
+                  <h:column>
+                      <f:facet name="header">
+                          <h:outputText value="LastName"/>
+                      </f:facet>
+                      <h:outputText value="#{item.lastName}"/>
+                  </h:column>
+                  <h:column>
+                      <f:facet name="header">
+                          <h:outputText value="Email"/>
+                      </f:facet>
+                      <h:outputText value="#{item.email}"/>
+                  </h:column>
+                  <h:column>
+                      <f:facet name="header">
+                          <h:outputText value="Phone"/>
+                      </f:facet>
+                      <h:outputText value="#{item.phone}"/>
+                  </h:column>
+                  <h:column>
+                      <f:facet name="header">
+                          <h:outputText value="Password"/>
+                      </f:facet>
+                      <h:outputText value="#{item.password}"/>
+                  </h:column>
+              </h:dataTable>
+          </h:form>
+      </f:view>
+
+                    <h:form>
+                    <h:commandLink action="/budgetClass/List" value="Show All BudgetClass Items"/>
+                </h:form>
+                <h:form>
+                    <h:commandLink action="/budgetItem/List" value="Show All BudgetItem Items"/>
+                </h:form>
+                <h:form>
+                    <h:commandLink action="/employee/List" value="Show All Employee Items"/>
+                </h:form>
+</h:body>
+
+
+
+</html>
+

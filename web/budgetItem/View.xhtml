@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewBudgetItemTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewBudgetItemLabel_id}"/>
+                    <h:outputText value="#{budgetItemController.selected.id}" title="#{bundle.ViewBudgetItemTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewBudgetItemLabel_description}"/>
+                    <h:outputText value="#{budgetItemController.selected.description}" title="#{bundle.ViewBudgetItemTitle_description}"/>
+                    <h:outputText value="#{bundle.ViewBudgetItemLabel_budgetClassId}"/>
+                    <h:outputText value="#{budgetItemController.selected.budgetClassId}" title="#{bundle.ViewBudgetItemTitle_budgetClassId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{budgetItemController.destroyAndView}" value="#{bundle.ViewBudgetItemDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewBudgetItemEditLink}"/>
+                <br />
+                <h:commandLink action="#{budgetItemController.prepareCreate}" value="#{bundle.ViewBudgetItemCreateLink}" />
+                <br />
+                <h:commandLink action="#{budgetItemController.prepareList}" value="#{bundle.ViewBudgetItemShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewBudgetItemIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
